@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Book, Review } from '../mocks/types'
 
 type Props = {
@@ -7,6 +7,16 @@ type Props = {
 
 export default function Home({ book }: Props) {
   const [reviews, setReviews] = useState<Review[] | null>(null)
+
+  useEffect(() => {
+    try {
+      fetch('https://my.backend/book')
+        .then((res) => (res.ok ? res.json() : `bad request`))
+        .then((data) => console.log(`client: ${JSON.stringify(data)}`))
+    } catch (error) {
+      console.error(error)
+    }
+  }, [])
 
   const handleGetReviews = () => {
     // Client-side request are mocked by `mocks/browser.ts`.
