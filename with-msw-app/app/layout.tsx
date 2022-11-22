@@ -1,5 +1,9 @@
 import './globals.css'
 
+if (process.env.NEXT_PUBLIC_API_MOCKING === 'enabled') {
+  await import('../mocks')
+}
+
 export default function RootLayout({
   children,
 }: {
