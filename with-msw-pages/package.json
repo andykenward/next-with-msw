@@ -19,5 +19,9 @@
   },
   "msw": {
     "workerDirectory": "public"
-  }
+  },
+  "engines": {
+    "node": ">=14 <18"
+  },
+  "engineStrict": true
 }
